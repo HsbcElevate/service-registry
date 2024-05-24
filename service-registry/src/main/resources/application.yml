@@ -1,0 +1,19 @@
+server:
+  port: 8761
+eureka:
+  datacenter: Mumbai
+  server:
+    datacenter: Bangalore
+    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 90
+    lease-renewal-interval-in-seconds: 30
+    instance-id=${spring:application:name}:${instanceId:${random:value}}:
+
+
